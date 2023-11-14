@@ -2,6 +2,10 @@
   "name": "bonsumet",
   "module": "src/index.ts",
   "type": "module",
+  "scripts": {
+    "dev": "bun --watch run ./src/index.ts",
+    "build": "bun run build.ts"
+  },
   "devDependencies": {
     "bun-types": "latest"
   },
