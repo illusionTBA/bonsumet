@@ -291,16 +291,8 @@ const anilist = async (url: URL): Promise<Response> => {
     const query = anilistPath.substring(1);
     const page = Number(url.searchParams.get("page"));
     const perPage = Number(url.searchParams.get("perPage"));
-    return redis ? JsonResponse(
-      await cache.fetch(
-        redis, 
-        `anilist:search;${query};${page};${perPage}`,
-        async() => await anilist.search(query, page, perPage),
-        (60 * 60) / 2
-      )
-    ) : JsonResponse(await anilist.search(query, page, perPage))
+    return JsonResponse(await anilist.search(query, page, perPage))
 
-    //return JsonResponse(res);
   }
   return JsonResponse({ message: "Route not found" }, 404);
 };
