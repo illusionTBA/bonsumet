@@ -36,6 +36,14 @@ const gogoanime = async (url: URL): Promise<Response> => {
     }
 
 
+
+    if (/\/.*/.test(gogoPath)) {
+      const query = gogoPath.substring(1);
+      const res = await gogo.search(query);
+      return JsonResponse(res)
+  }   
+
+
   return JsonResponse({ message: "Route not found" }, 404);
 };
 
